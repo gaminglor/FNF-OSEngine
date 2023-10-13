@@ -45,6 +45,9 @@ import DialogueBoxPsych;
 import hscript.Parser;
 import hscript.Interp;
 #end
+#if android
+import android.widget.Toast;
+#end
 
 #if desktop
 import Discord;
@@ -711,6 +714,9 @@ class FunkinLua {
 		});
 		Lua_helper.add_callback(lua, 'openURL', function(url:String) {
 			CoolUtil.browserLoad(url);
+		});
+   Lua_helper.add_callback(lua, 'addToastText', function(message:String) {
+			Toast.makeText(message, Toast.LENGTH_LONG);
 		});
 		Lua_helper.add_callback(lua, "pcUserName", function() {
 			return Sys.environment()["USERNAME"];
